@@ -1,5 +1,8 @@
 namespace TCCatServer.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +29,32 @@ namespace TCCatServer.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+
+            var user = new ApplicationUser()
+            {
+                UserName = "SuperFrank",
+                Email = "frank.sun@truecommerce.com",
+                EmailConfirmed = true,
+                Level = 0,
+                FirstName = "Frank",
+                LastName = "Sun",
+                JoinDate = DateTime.Now
+            };
+
+            userManager.Create(user, "Abc_1234");
+
+            if (roleManager.Roles.Count() == 0)
+            {
+                roleManager.Create(new IdentityRole { Name = "SuperAdmin" });
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "User" });
+            }
+
+            var superAdmin = userManager.FindByEmail("frank.sun@truecommerce.com");
+            userManager.AddToRoles(superAdmin.Id, new string[] { "SuperAdmin", "Admin"});
         }
     }
 }
