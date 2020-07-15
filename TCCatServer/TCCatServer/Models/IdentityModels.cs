@@ -35,6 +35,13 @@ namespace TCCatServer.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Configuration.ProxyCreationEnabled = false;
+
+            // Lazy loading目前默认为false, 将来为了提高性能，可以考虑改成true，这样当需要reference数据的时候，就要显示的include进来，如
+            //List<ParentClass> parents = context.Parents            // .Include("Children")
+            // .ToList();
+            //return parents;
+            //Configuration.LazyLoadingEnabled = true;
         }
         
         public static ApplicationDbContext Create()
