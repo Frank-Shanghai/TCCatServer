@@ -250,10 +250,20 @@
     <Compile Include="Migrations\202007071410284_UserModelUpdateAndSeedUpdate.Designer.cs">
       <DependentUpon>202007071410284_UserModelUpdateAndSeedUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007170758083_AddDomainModels.cs" />
+    <Compile Include="Migrations\202007170758083_AddDomainModels.Designer.cs">
+      <DependentUpon>202007170758083_AddDomainModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Forum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PostLike.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\ThreadFavorite.cs" />
+    <Compile Include="Models\ThreadLike.cs" />
+    <Compile Include="Models\Thread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -340,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007071410284_UserModelUpdateAndSeedUpdate.resx">
       <DependentUpon>202007071410284_UserModelUpdateAndSeedUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007170758083_AddDomainModels.resx">
+      <DependentUpon>202007170758083_AddDomainModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
