@@ -26,7 +26,9 @@ namespace TCCatServer.Models
 
         public Guid ForumId { get; set; }
 
-        public Guid UserId { get; set; }
+        [Required]
+        [StringLength(128)]
+        public string UserId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThreadFavorite> Favoriates { get; set; }
