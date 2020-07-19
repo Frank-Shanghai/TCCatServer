@@ -1,3 +1,5 @@
 TCCatServer/packages/
 TCCatServer/TCCatServer/bin/
 TCCatServer/TCCatServer/obj/
+TCCatServer/.vs/TCCatServer/v14/.suo
+TCCatServer/TCCatServer/TCCatServer.csproj.user
