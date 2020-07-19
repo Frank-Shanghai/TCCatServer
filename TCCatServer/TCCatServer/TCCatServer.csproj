@@ -236,8 +236,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\ForaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostLikesController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\ThreadFavoritesController.cs" />
+    <Compile Include="Controllers\ThreadLikesController.cs" />
+    <Compile Include="Controllers\ThreadsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -253,6 +259,10 @@
     <Compile Include="Migrations\202007170758083_AddDomainModels.cs" />
     <Compile Include="Migrations\202007170758083_AddDomainModels.Designer.cs">
       <DependentUpon>202007170758083_AddDomainModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007181048231_UpdateThreadUserIdColumnType.cs" />
+    <Compile Include="Migrations\202007181048231_UpdateThreadUserIdColumnType.Designer.cs">
+      <DependentUpon>202007181048231_UpdateThreadUserIdColumnType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -353,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007170758083_AddDomainModels.resx">
       <DependentUpon>202007170758083_AddDomainModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007181048231_UpdateThreadUserIdColumnType.resx">
+      <DependentUpon>202007181048231_UpdateThreadUserIdColumnType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
