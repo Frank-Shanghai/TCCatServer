@@ -66,6 +66,55 @@ namespace TCCatServer.Controllers
             };
         }
 
+        // Authorize to all users, they can use user id to get user details
+        [Route("user/id/{id}", Name = "GetUserById")]
+        //In Web API, every route has a name. Route names are useful for generating links, so that you can include a link in an HTTP response，
+        //for example, refer to ModelFactory.cs, like: Url = this.urlHelper.Link( "GetRoleById", new { id = appRole.Id } )
+        public async Task<IHttpActionResult> GetById(string Id)
+        {
+            var user = await UserManager.FindByIdAsync(Id);
+
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+            return NotFound();
+        }
+
+        [Route("CurrentUserDetails", Name = "GetCurrentUserDetails")]
+        public async Task<IHttpActionResult> GetCurrentUserDetails()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            if (user != null)
+            {
+                return Ok(new DTOs.UserDetails {
+                    Id = user.Id,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    Roles = UserManager.GetRolesAsync(user.Id).Result,
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Level = user.Level,
+                    JoinDate = user.JoinDate
+                });
+            }
+
+            return NotFound();
+        }
+
+
+        // Get logged on user id, and use this id to get user details. Instead of athorizing all users the right to 
+        // get user details by userName, it's much safter to get them by user id since it's just a Guid string
+        [Route("user/getCurrentUserId")]
+        public IHttpActionResult GetCurrentUserId()
+        {
+            return Ok(User.Identity.GetUserId());
+        }
+
+
         // POST api/Account/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()
